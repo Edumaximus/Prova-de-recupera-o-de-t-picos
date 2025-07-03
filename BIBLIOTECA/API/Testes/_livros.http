@@ -1,6 +1,13 @@
 ### Lista de Livros
 GET http://localhost:5231/api/livros
 
+###Procurar livro por id
+
+GET http://localhost:5231/api/livros/1
+
+###Procurar livro com id inexistente
+GET http://localhost:5231/api/livros/3
+
 ### Cadastrar Livro
 POST http://localhost:5231/api/livros
 Content-Type: application/json

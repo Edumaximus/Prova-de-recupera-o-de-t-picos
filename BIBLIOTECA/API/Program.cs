@@ -38,4 +38,14 @@ app.MapGet("/api/livros", ([FromServices] BibliotecaDbContext ctx) =>
     return Results.NotFound();
 });
 
+//endpoint 3: Buscar livro por id (get)
+app.MapGet("/api/livros/{id}", ([FromServices] BibliotecaDbContext ctx, [FromRoute] int id) =>
+{
+    Livro? livro = ctx.Livros.Find(id);
+    if (livro == null){
+        return Results.NotFound("Livro com ID mencionado não encontrado.");
+    }
+    return Results.Ok(livro);
+});
+
 app.Run();
