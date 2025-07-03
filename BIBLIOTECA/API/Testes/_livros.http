@@ -5,15 +5,15 @@ GET http://localhost:5231/api/livros
 GET http://localhost:5231/api/livros/1
 
 ###Procurar livro com id inexistente
-GET http://localhost:5231/api/livros/3
+GET http://localhost:5231/api/livros/5
 
 ### Cadastrar Livro
 POST http://localhost:5231/api/livros
 Content-Type: application/json
 
 {
-    "Titulo": "Sherlock Holmes",
-    "Autor": "Charles Dickens",
+    "Titulo": "Crepúsculo",
+    "Autor": "e eu vou lembrar?",
     "CategoriaId": 2
 }
 
@@ -57,6 +57,16 @@ Content-Type: application/json
     "CategoriaId": 5
 }
 
+### Alterar Livro com id inexistente
+PUT http://localhost:5231/api/livros/5
+Content-Type: application/json
+
+{
+    "Titulo": "1001 Noites",
+    "Autor": "Folclore Arábico",
+    "CategoriaId": 5
+}
+
 ### Alterar Livro com categoria invalida
 PUT http://localhost:5231/api/livros/1
 Content-Type: application/json
@@ -86,3 +96,9 @@ Content-Type: application/json
     "Autor": "aa",
     "CategoriaId": 5
 }
+
+###Deletar livro
+DELETE http://localhost:5231/api/livros/4
+
+###Deletar livro com id inexistente
+DELETE http://localhost:5231/api/livros/5

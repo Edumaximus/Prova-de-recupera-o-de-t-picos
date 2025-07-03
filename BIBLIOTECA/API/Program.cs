@@ -81,4 +81,16 @@ app.MapPut("/api/livros/{id}", ([FromServices] BibliotecaDbContext ctx, [FromRou
     return Results.Ok(livro);
 });
 
+//endpoint 5: remover livro (delete)
+app.MapDelete("/api/livros/{id}", ([FromServices] BibliotecaDbContext ctx, [FromRoute] int id) =>
+{
+    Livro? livro = ctx.Livros.Find(id);
+    if (livro == null){
+        return Results.NotFound("Livro com ID {id} não encontrado para remoção.");
+    }
+    ctx.Livros.Remove(livro);
+    ctx.SaveChanges();
+    return Results.NoContent();
+});
+
 app.Run();
