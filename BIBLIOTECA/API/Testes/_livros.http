@@ -1,0 +1,10 @@
+### Lista de Tarefas
+GET http://localhost:5231
+
+### Cadastrar Tarefa
+POST http://localhost:5231
+Content-Type: application/json
+
+{
+
+}
