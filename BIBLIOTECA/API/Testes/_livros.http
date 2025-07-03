@@ -1,14 +1,14 @@
-### Lista de Tarefas
-GET http://localhost:5231
+### Lista de Livros
+GET http://localhost:5231/api/livros
 
 ### Cadastrar Livro
 POST http://localhost:5231/api/livros
 Content-Type: application/json
 
 {
-    "Titulo": "1001 noites",
-    "Autor": "Folclore Arábico",
-    "CategoriaId": 3
+    "Titulo": "Sherlock Holmes",
+    "Autor": "Charles Dickens",
+    "CategoriaId": 2
 }
 
 ###Cadastrar livro faltando letras no titulo
