@@ -13,7 +13,15 @@ app.MapPost("/api/livros", ([FromBody] Livro livro,[FromServices] BibliotecaDbCo
     {
         Categoria? categoria = ctx.Categorias.Find(livro.CategoriaId);
         if (categoria is null){
-            return Results.NotFound();
+            return Results.NotFound("Categoria inválida. O ID da categoria fornecido não existe.");
+        }
+        String? titulo = livro.Titulo;
+        if (titulo.Length < 3){
+            return Results.BadRequest("Título deve ter no mínimo 3 caracteres.");
+        }
+        String? autor = livro.Autor;
+        if (autor.Length < 3){
+            return Results.BadRequest("Autor deve ter no mínimo 3 caracteres.");
         }
         livro.Categoria = categoria;
         ctx.Livros.Add(livro);

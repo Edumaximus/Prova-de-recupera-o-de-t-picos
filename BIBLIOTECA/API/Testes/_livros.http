@@ -10,3 +10,33 @@ Content-Type: application/json
     "Autor": "Folclore Arábico",
     "CategoriaId": 3
 }
+
+###Cadastrar livro faltando letras no titulo
+POST http://localhost:5231/api/livros
+Content-Type: application/json
+
+{
+    "Titulo": "aa",
+    "Autor": "aaa",
+    "CategoriaId": 3
+}
+
+###Cadastrar livro com categoria inexistente
+POST http://localhost:5231/api/livros
+Content-Type: application/json
+
+{
+    "Titulo": "aa",
+    "Autor": "aaa",
+    "CategoriaId": 10
+}
+
+###Cadastrar livro faltando letras no autor
+POST http://localhost:5231/api/livros
+Content-Type: application/json
+
+{
+    "Titulo": "aaa",
+    "Autor": "aa",
+    "CategoriaId": 3
+}
