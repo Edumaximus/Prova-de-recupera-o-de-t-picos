@@ -43,8 +43,41 @@ app.MapGet("/api/livros/{id}", ([FromServices] BibliotecaDbContext ctx, [FromRou
 {
     Livro? livro = ctx.Livros.Find(id);
     if (livro == null){
-        return Results.NotFound("Livro com ID mencionado não encontrado.");
+        return Results.NotFound("Livro com ID {id} não encontrado.");
     }
+
+    return Results.Ok(livro);
+});
+
+//endpoint 4: Atualizar livro (put)
+app.MapPut("/api/livros/{id}", ([FromServices] BibliotecaDbContext ctx, [FromRoute] int id, [FromBody] Livro livroAlterado) =>
+{
+    Livro? livro = ctx.Livros.Find(id);
+    if (livro == null){
+        return Results.NotFound("Livro com ID {id} não encontrado para atualização.");
+    }
+
+    Categoria? categoria = ctx.Categorias.Find(livroAlterado.CategoriaId);
+    if (categoria is null){
+        return Results.NotFound("Categoria inválida. O ID da categoria fornecido não existe.");
+    }
+
+    String? titulo = livroAlterado.Titulo;
+    if (titulo.Length < 3){
+        return Results.BadRequest("Título deve ter no mínimo 3 caracteres.");
+    }
+
+    String? autor = livroAlterado.Autor;
+    if (autor.Length < 3){
+        return Results.BadRequest("Autor deve ter no mínimo 3 caracteres.");
+    }
+
+    livro.Categoria = categoria;
+    livro.Titulo = titulo;
+    livro.Autor = autor;
+
+    ctx.Livros.Update(livro);
+    ctx.SaveChanges();
     return Results.Ok(livro);
 });
 

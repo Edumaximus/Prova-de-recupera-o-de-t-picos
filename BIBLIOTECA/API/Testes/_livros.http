@@ -2,7 +2,6 @@
 GET http://localhost:5231/api/livros
 
 ###Procurar livro por id
-
 GET http://localhost:5231/api/livros/1
 
 ###Procurar livro com id inexistente
@@ -46,4 +45,44 @@ Content-Type: application/json
     "Titulo": "aaa",
     "Autor": "aa",
     "CategoriaId": 3
+}
+
+### Alterar Livro
+PUT http://localhost:5231/api/livros/1
+Content-Type: application/json
+
+{
+    "Titulo": "1001 Noites",
+    "Autor": "Folclore Arábico",
+    "CategoriaId": 5
+}
+
+### Alterar Livro com categoria invalida
+PUT http://localhost:5231/api/livros/1
+Content-Type: application/json
+
+{
+    "Titulo": "1001 Noites",
+    "Autor": "Folclore Arábico",
+    "CategoriaId": 10
+}
+
+### Alterar Livro com titulo invalido
+PUT http://localhost:5231/api/livros/1
+Content-Type: application/json
+
+{
+    "Titulo": "aa",
+    "Autor": "Folclore Arábico",
+    "CategoriaId": 5
+}
+
+### Alterar Livro com autor invalido
+PUT http://localhost:5231/api/livros/1
+Content-Type: application/json
+
+{
+    "Titulo": "1001 Noites",
+    "Autor": "aa",
+    "CategoriaId": 5
 }
