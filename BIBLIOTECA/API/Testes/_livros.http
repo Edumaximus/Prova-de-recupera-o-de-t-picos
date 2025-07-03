@@ -1,10 +1,12 @@
 ### Lista de Tarefas
 GET http://localhost:5231
 
-### Cadastrar Tarefa
-POST http://localhost:5231
+### Cadastrar Livro
+POST http://localhost:5231/api/livros
 Content-Type: application/json
 
 {
-
+    "Titulo": "1001 noites",
+    "Autor": "Folclore Arábico",
+    "CategoriaId": 3
 }
